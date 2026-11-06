@@ -17,15 +17,21 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
+
 -- Database: `users_db`
---
+
 
 -- --------------------------------------------------------
 
---
+
 -- Table structure for table `clubs`
---
+
+-- Step 1: Create the database
+CREATE DATABASE users_db;
+
+-- Step 2: Switch to and select the new database (required in most tools)
+USE users_db;
+
 
 CREATE TABLE `clubs` (
   `id` int NOT NULL,
@@ -210,6 +216,16 @@ ALTER TABLE `facility_bookings`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+--Create the purpose column
+--
+ALTER TABLE `facility_bookings`
+  ADD purpose VARCHAR(15);
+
+
+ALTER TABLE `facility_bookings`
+MODIFY COLUMN purpose VARCHAR(150);
+
+--
 -- AUTO_INCREMENT for table `matches_schedules`
 --
 ALTER TABLE `matches_schedules`
@@ -243,6 +259,9 @@ ALTER TABLE `facility_bookings`
 ALTER TABLE `user_clubs`
   ADD CONSTRAINT `user_clubs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
+
+ALTER TABLE users MODIFY COLUMN role ENUM('admin', 'user', 'student') DEFAULT 'user';
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
