@@ -88,3 +88,5 @@
                 <button type="submit" name="join_btn" class="join-btn">Request to Join</button>
             </form>
         </div>
+
+<!-- Comment -->
