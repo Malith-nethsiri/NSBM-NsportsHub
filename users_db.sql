@@ -162,3 +162,4 @@ INSERT INTO `user_clubs` (`id`, `user_id`, `club_name`, `status`, `joined_at`) V
 (9, 2, 'Volleyball', 'approved', '2026-11-05 08:10:30');
 
 --abcd
+--asdasdasdasda sda sdasd asdasdasdas da
