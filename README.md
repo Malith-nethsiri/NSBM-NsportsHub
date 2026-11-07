@@ -1,5 +1,3 @@
-# Project Name
-
 A brief description of what your project does goes here.
 
 ## Prerequisites
