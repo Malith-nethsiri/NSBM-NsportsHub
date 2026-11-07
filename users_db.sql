@@ -163,7 +163,108 @@ INSERT INTO `user_clubs` (`id`, `user_id`, `club_name`, `status`, `joined_at`) V
 
 
 
---for testing adding some comments
 --
+-- Indexes for dumped tables
 --
+
 --
+-- Indexes for table `clubs`
+--
+ALTER TABLE `clubs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `club_name` (`club_name`);
+
+--
+-- Indexes for table `facility_bookings`
+--
+ALTER TABLE `facility_bookings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `matches_schedules`
+--
+ALTER TABLE `matches_schedules`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `user_clubs`
+--
+ALTER TABLE `user_clubs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `clubs`
+--
+ALTER TABLE `clubs`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `facility_bookings`
+--
+ALTER TABLE `facility_bookings`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+--Create the purpose column
+--
+ALTER TABLE `facility_bookings`
+  ADD purpose VARCHAR(15);
+
+
+ALTER TABLE `facility_bookings`
+MODIFY COLUMN purpose VARCHAR(150);
+
+--
+-- AUTO_INCREMENT for table `matches_schedules`
+--
+ALTER TABLE `matches_schedules`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user_clubs`
+--
+ALTER TABLE `user_clubs`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `facility_bookings`
+--
+ALTER TABLE `facility_bookings`
+  ADD CONSTRAINT `facility_bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_clubs`
+--
+ALTER TABLE `user_clubs`
+  ADD CONSTRAINT `user_clubs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+COMMIT;
+
+ALTER TABLE users MODIFY COLUMN role ENUM('admin', 'user', 'student') DEFAULT 'user';
+
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
