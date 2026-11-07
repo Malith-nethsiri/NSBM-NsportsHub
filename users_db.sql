@@ -160,7 +160,3 @@ INSERT INTO `user_clubs` (`id`, `user_id`, `club_name`, `status`, `joined_at`) V
 (7, 1, 'Netball', 'rejected', '2026-10-27 06:43:36'),
 (8, 2, 'Badminton', 'pending', '2026-11-02 06:43:39'),
 (9, 2, 'Volleyball', 'approved', '2026-11-05 08:10:30');
-
---abcd
---asdasdasdasda sda sdasd asdasdasdas da
-----
