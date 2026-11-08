@@ -67,3 +67,27 @@
                     <p>Stay up to date with training practice sessions and competitive fixtures.</p>
                 </div>
             </a>
+
+            <a href="facility_booking.php" class="card-link">
+                <div class="card">
+                    <div class="card-icon icon-yellow">
+                        <i class='bx bx-dumbbell'></i>
+                    </div>
+                    <h3>Facility Bookings</h3>
+                    <p>Reserve grounds, indoor courts, and equipment directly online.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <?php if (!empty($alerts)): ?>
+    <div class="alert-box">
+        <?php foreach($alerts as $alert): ?>
+        <div class="alert <?= $alert['type'] ?>">
+            <i class='bx <?= $alert['type'] === 'success' ? 'bxs-check-circle' : 'bxs-x-circle'; ?>'></i>
+            <span><?= htmlspecialchars($alert['message']); ?></span>
+        </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+    
