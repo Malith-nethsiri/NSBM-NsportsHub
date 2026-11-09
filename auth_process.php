@@ -21,3 +21,12 @@ if (isset($_POST['register_btn'])) {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     $assigned_role = getNsbmRole($email);
+ if (!$assigned_role) {
+        $_SESSION['alerts'][] = [
+            'type' => 'error',
+            'message' => 'Registration allowed only with official NSBM emails (@students.nsbm.ac.lk or @nsbm.ac.lk)!'
+        ];
+        $_SESSION['active_form'] = 'register';
+        header('Location: index.php');
+        exit();
+    }
