@@ -23,3 +23,49 @@ header {
     -webkit-backdrop-filter: blur(20px);
     background: rgba(15, 23, 42, 0.4);
 }
+
+.logo img {
+    height: 70px; 
+    width: auto; 
+    display: block;
+    object-fit: contain;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 30px;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #0abf30;
+}
+
+.user-auth {
+    margin-left: 40px;
+}
+
+.user-auth .login-btn-modal {
+    height: 40px;
+    padding: 0 35px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 40px;
+    font-size: 16px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s; 
+}
+
+.user-auth .login-btn-modal:hover {
+    background: white;
+    color: #222;
+}
