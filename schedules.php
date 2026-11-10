@@ -37,3 +37,45 @@
             <?php endif; ?>
         </div>
     </header>
+
+    <!-- SCHEDULES & MATCHES SECTION -->
+    <section class="profile-section">
+        <div class="admin-subcontainer" style="max-width: 1000px; margin-top: 40px;">
+            <div class="view-header">
+                <h2><i class='bx bx-calendar-event'></i> Upcoming Matches & Training Fixtures</h2>
+            </div>
+
+            <div class="table-responsive">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Event Title</th>
+                            <th>Sport</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Venue</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if ($schedules_result && $schedules_result->num_rows > 0): ?>
+                            <?php while ($row = $schedules_result->fetch_assoc()): ?>
+                                <tr>
+                                    <td><strong><?= htmlspecialchars($row['title']) ?></strong></td>
+                                    <td><?= htmlspecialchars($row['sport_type']) ?></td>
+                                    <td><span class="type-pill"><?= htmlspecialchars($row['event_type']) ?></span></td>
+                                    <td><?= date('M d, Y', strtotime($row['event_date'])) ?></td>
+                                    <td><?= htmlspecialchars($row['event_time']) ?></td>
+                                    <td><?= htmlspecialchars($row['venue']) ?></td>
+                                    <td><span class="status-tag <?= strtolower($row['status']) ?>"><?= htmlspecialchars($row['status']) ?></span></td>
+                                </tr>
+                            <?php endwhile; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7" class="no-data">No upcoming matches or schedules posted yet.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
