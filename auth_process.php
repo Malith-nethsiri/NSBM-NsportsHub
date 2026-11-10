@@ -30,3 +30,53 @@ if (isset($_POST['register_btn'])) {
         header('Location: index.php');
         exit();
     }
+      $stmt = $conn->prepare("SELECT email FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $_SESSION['alerts'][] = [
+            'type' => 'error',
+            'message' => 'Email is already registered!'
+        ];
+        $_SESSION['active_form'] = 'register';
+    } else {
+        $insert_stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
+        $insert_stmt->bind_param("ssss", $name, $email, $password, $assigned_role);
+        $insert_stmt->execute();
+
+        $_SESSION['alerts'][] = [
+            'type' => 'success',
+            'message' => 'Registration successful! You can now log in.'
+        ];
+        $_SESSION['active_form'] = 'login';
+    }
+
+    header('Location: index.php');
+    exit();
+}
+    $stmt = $conn->prepare("SELECT id, name, email, password, role FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->num_rows > 0 ? $result->fetch_assoc() : null;
+
+    if ($user && password_verify($password, $user['password'])) {
+        $role = $user['role'] ?? $nsbm_role;
+
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['name']    = $user['name'];
+        $_SESSION['email']   = $user['email'];
+        $_SESSION['role']    = $role;
+        $_SESSION['alerts'][] = [
+            'type' => 'success',
+            'message' => 'Welcome back, ' . htmlspecialchars($user['name']) . '!'
+        ];
+
+        // DIRECT REDIRECT FOR ADMINS
+        if ($role === 'admin') {
+            header('Location: admin.php');
+            exit();
+        }
+
