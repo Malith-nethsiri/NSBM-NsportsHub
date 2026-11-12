@@ -151,3 +151,69 @@
             </form>
         </div>
     </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>NSBM Sports Club Circle</h3>
+                <p>Your ultimate destination for campus athletics, club management, match schedules, and sports facility bookings.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="sports_clubs.php">Sports Clubs</a></li>
+                    <li><a href="schedules.php">Schedules & Matches</a></li>
+                    <li><a href="facility_booking.php">Facility Bookings</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/nsbm.lk/" target="_blank" title="Facebook"><i class='bx bxl-facebook'></i></a>
+                    <a href="https://www.instagram.com/nsbmgreenuniversity/?hl=en" target="_blank" title="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://www.youtube.com/@NSBMGreenUniversityTown" target="_blank" title="YouTube"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <?= date('Y'); ?> NSBM Sports Club Circle. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        var searchInput = document.getElementById('searchInput');
+        var cards = document.querySelectorAll('.sport-card');
+        var noResults = document.getElementById('noResults');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                var text = searchInput.value.toLowerCase().trim();
+                var shown = 0;
+
+                cards.forEach(function (card) {
+                    if (card.dataset.name.indexOf(text) !== -1) {
+                        card.style.display = '';
+                        shown++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                noResults.style.display = shown === 0 ? 'block' : 'none';
+            });
+        }
+
+        document.querySelectorAll('.select-btn').forEach(function (button) {
+            button.addEventListener('click', function () {
+                document.getElementById('club_name').value = button.dataset.club;
+                document.getElementById('join-form').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

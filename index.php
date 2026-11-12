@@ -91,3 +91,76 @@
     </div>
     <?php endif; ?>
     
+    <div class="auth-modal <?= $active_form === 'register' ? 'show slide' : ($active_form === 'login' ? 'show' : ''); ?>">
+        <button type="button" class="close-btn-modal"><i class="bx bx-x-circle"></i></button> 
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="auth_process.php" method="POST">
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="name@students.nsbm.ac.lk" required>
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <button type="submit" name="login_btn" class="btn">Login</button>
+                <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+            </form>
+        </div>
+
+        <div class="form-box register">
+            <h2>Register</h2>
+            <form action="auth_process.php" method="POST">
+                <div class="input-box">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <i class="bx bx-user"></i>
+                </div> 
+                <div class="input-box">
+                    <input type="email" name="email" placeholder="name@students.nsbm.ac.lk" required>
+                    <i class="bx bx-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" placeholder="Password" required>
+                    <i class="bx bx-lock-alt"></i>
+                </div>
+                <button type="submit" name="register_btn" class="btn">Register</button>
+                <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>NSBM Sports Club Circle</h3>
+                <p>Your ultimate destination for campus athletics, club management, match schedules, and sports facility bookings.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="sports_clubs.php">Sports Clubs</a></li>
+                    <li><a href="schedules.php">Schedules & Matches</a></li>
+                    <li><a href="facility_booking.php">Facility Bookings</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/nsbm.lk/" target="_blank" title="Facebook"><i class='bx bxl-facebook'></i></a>
+                    <a href="https://www.instagram.com/nsbmgreenuniversity/?hl=en" target="_blank" title="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://www.youtube.com/@NSBMGreenUniversityTown" target="_blank" title="YouTube"><i class='bx bxl-youtube'></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <?= date('Y'); ?> NSBM Sports Club Circle. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
