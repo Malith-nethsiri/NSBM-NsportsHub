@@ -183,3 +183,37 @@
             <p>&copy; <?= date('Y'); ?> NSBM Sports Club Circle. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
+    <script>
+        var searchInput = document.getElementById('searchInput');
+        var cards = document.querySelectorAll('.sport-card');
+        var noResults = document.getElementById('noResults');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                var text = searchInput.value.toLowerCase().trim();
+                var shown = 0;
+
+                cards.forEach(function (card) {
+                    if (card.dataset.name.indexOf(text) !== -1) {
+                        card.style.display = '';
+                        shown++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                noResults.style.display = shown === 0 ? 'block' : 'none';
+            });
+        }
+
+        document.querySelectorAll('.select-btn').forEach(function (button) {
+            button.addEventListener('click', function () {
+                document.getElementById('club_name').value = button.dataset.club;
+                document.getElementById('join-form').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
