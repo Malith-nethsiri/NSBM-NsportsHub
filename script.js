@@ -6,3 +6,15 @@ const closeBtnModal = document.querySelector('.close-btn-modal');
 const profileBox = document.querySelector('.profile-box');
 const avatarCircle = document.querySelector('.avatar-circle');
 const alertBox = document.querySelector('.alert-box');
+
+if (registerLink) {
+    registerLink.addEventListener('click', () => authModal.classList.add('slide'));
+}
+
+if (loginLink) {
+    loginLink.addEventListener('click', () => authModal.classList.remove('slide'));
+}
+
+if (loginBtnModal) {
+    loginBtnModal.addEventListener('click', () => authModal.classList.add('show'));
+}
