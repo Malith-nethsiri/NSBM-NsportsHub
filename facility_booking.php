@@ -59,4 +59,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_booking'])) {
         ");
         $check->bind_param("sss", $facility_name, $booking_date, $time_slot);
         $check->execute();
-        
+
+         if ($check->get_result()->num_rows > 0) {
+            $_SESSION['alerts'][] = ['type' => 'error', 'message' => 'That facility is already reserved for the selected date and time slot!'];
+        } else {
+            // 3. Insert Booking Request
+            $stmt = $conn->prepare("
+                INSERT INTO facility_bookings (user_id, facility_name, booking_date, time_slot, purpose, status) 
+                VALUES (?, ?, ?, ?, ?, 'pending')
+            ");
+            $stmt->bind_param("issss", $user_id, $facility_name, $booking_date, $time_slot, $purpose);
+            
+            if ($stmt->execute()) {
+                $_SESSION['alerts'][] = ['type' => 'success', 'message' => 'Booking request submitted! Waiting for admin approval.'];
+            } else {
+                $_SESSION['alerts'][] = ['type' => 'error', 'message' => 'Failed to process request. Please try again.'];
+            }
+        }
+    }
