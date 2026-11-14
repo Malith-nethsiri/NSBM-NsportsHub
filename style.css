@@ -82,3 +82,11 @@ nav a:hover {
     box-sizing: border-box;
     color: white;
 }
+.hero-section h1 {
+    font-size: 48px;
+    max-width: 850px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
+}
