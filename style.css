@@ -90,3 +90,11 @@ nav a:hover {
     margin-bottom: 15px;
     text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
 }
+.hero-section p {
+    font-size: 15px;
+    max-width: 600px;
+    color: #f8fafc;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
+}
+
