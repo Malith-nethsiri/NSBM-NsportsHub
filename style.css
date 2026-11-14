@@ -98,3 +98,33 @@ nav a:hover {
     text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.8);
 }
 
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.hero-btn.primary {
+    background: #0abf30;
+    color: white;
+}
+
+.hero-btn.primary:hover {
+    background: #089626;
+}
+
+.hero-btn.secondary {
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.hero-btn.secondary:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
